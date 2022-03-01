@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BooksController;
+use App\Http\Controllers\CommentsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +35,11 @@ Route::get(
 )->name('showBook');
 
 Route::get(
+    'show/book/{id}',
+    [BooksController::class, 'showBookById']
+)->name('showBookById');
+
+Route::get(
     'update/book/{id}',
     [BooksController::class, 'formUpdateBook']
 )->name('formUpdateBook');
@@ -43,7 +49,22 @@ Route::patch(
     [BooksController::class, 'UpdateBook']
 )->name('updateBook');
 
+Route::get(
+    '/create/comment',
+    [CommentsController::class, 'createComment']
+)->name('createBook');
+
+Route::post(
+    '/store/comment',
+    [CommentsController::class, 'storeComment']
+)->name('storeComment');
+
 Route::delete(
     'delete/book/{id}',
     [BooksController::class, 'deleteBook']
 )->name('deleteBook');
+
+Route::get(
+    'show/comment',
+    [CommentsController::class, 'showComment']
+)->name('showComment');

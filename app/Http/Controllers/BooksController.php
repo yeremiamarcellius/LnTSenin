@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Book;
+use App\Models\Comment;
 
 class BooksController extends Controller
 {
@@ -12,19 +13,31 @@ class BooksController extends Controller
     }
 
     public function storeBook(Request $request){
+        // $request->validate([
+        //     'bookTitle' => 'min:5|max:10',
+        //     'releaseDate' => 'numeric|min:2021|max:2022'
+        // ]);
+
         Book::create([
             'bookTitle' => $request->bookTitle,
             'releaseDate' => $request->releaseDate,
             'author' => $request->author,
             'genre' => $request->genre
         ]);
-        
+
         return redirect('/');
     }
 
     public function showBook(){
         $books = Book::all();
         return view('showBooks', compact('books'));
+    }
+
+    public function showBookById($id){
+        $book = Book::findOrFail($id);
+        // $comments = Comment::has('BookId', '==', $id)->get();
+
+        return view('showBookById', compact('book'));
     }
 
     public function formUpdateBook($id){
