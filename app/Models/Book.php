@@ -19,4 +19,8 @@ class Book extends Model
     public function comments(){
         return $this->hasMany(Comment::class, 'BookId');
     }
+
+    public function suppliers(){
+        return $this->belongsToMany(Supplier::class, 'supplier_books', 'supplierId', 'bookId');
+    }
 }

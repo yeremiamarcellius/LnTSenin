@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BooksController;
 use App\Http\Controllers\CommentsController;
+use App\Http\Controllers\SupplierController;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,3 +69,8 @@ Route::get(
     'show/comment',
     [CommentsController::class, 'showComment']
 )->name('showComment');
+
+Route::get(
+    'show/supplier',
+    [SupplierController::class, 'showSupplier']
+)->name('showSupplier');

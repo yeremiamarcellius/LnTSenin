@@ -17,6 +17,11 @@
         @endforeach
 
     </ul>
+    <ul>
+        @foreach ($book->suppliers as $supplier)
+            <li>{{$supplier->supplierName}}</li>
+        @endforeach
+    </ul>
 
 </body>
 </html>
