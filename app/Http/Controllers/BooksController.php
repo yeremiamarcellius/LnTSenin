@@ -69,4 +69,10 @@ class BooksController extends Controller
         Book::destroy($id);
         return redirect('/show/books');
     }
+
+    public function getBook(){
+        $books = Book::all();
+
+        return $books;
+    }
 }

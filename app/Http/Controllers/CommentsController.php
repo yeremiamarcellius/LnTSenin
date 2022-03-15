@@ -28,4 +28,28 @@ class CommentsController extends Controller
 
         return view('showComment', compact(('comments')));
     }
+
+    public function addComment(Request $request){
+        Comment::create([
+            'BookId' =>$request->id,
+            'Comment' =>$request->comment
+        ]);
+
+        return 'success';
+    }
+
+    public function updateComment(Request $request, $id){
+        Comment::findOrFail($id)->update([
+            'BookId' =>$request->id,
+            'Comment' => $request->comment
+        ]);
+
+        return 'update success';
+    }
+
+    public function deleteComment($id){
+        Comment::destroy($id);
+
+        return 'delete success';
+    }
 }

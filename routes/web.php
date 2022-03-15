@@ -74,3 +74,8 @@ Route::get(
     'show/supplier',
     [SupplierController::class, 'showSupplier']
 )->name('showSupplier');
+
+Route::get(
+    'books',
+    [BooksController::class, 'getBook']
+)->name('getBook');
