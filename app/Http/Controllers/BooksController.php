@@ -17,12 +17,21 @@ class BooksController extends Controller
         //     'bookTitle' => 'min:5|max:10',
         //     'releaseDate' => 'numeric|min:2021|max:2022'
         // ]);
+        $extension = $request->file('picture')->getClientOriginalExtension();
+        $fileName = $request->bookTitle.'_'.$request->author.'.'.$extension;
+        $request->file('picture')->storeAs('public/image', $fileName);
+
+        $request->validate([
+            'bookTitle' => 'min:5|max:100',
+            'picture' => 'required|image|mimes:jpg,png,jpeg,gif,svg'
+        ]);
 
         Book::create([
             'bookTitle' => $request->bookTitle,
             'releaseDate' => $request->releaseDate,
             'author' => $request->author,
-            'genre' => $request->genre
+            'genre' => $request->genre,
+            'picture' => $fileName
         ]);
 
         return redirect('/');

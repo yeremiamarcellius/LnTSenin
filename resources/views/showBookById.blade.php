@@ -8,6 +8,7 @@
 </head>
 <body>
     <h1>{{$book->bookTitle}}</h1>
+    <img src="{{asset('storage/image/'.$book->picture)}}" alt="" style="width: 100px">
     <p>{{$book->author}}</p>
     <p>{{$book->genre}}</p>
     <p>{{$book->releaseDate}}</p>

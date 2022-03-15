@@ -14,6 +14,7 @@ class Book extends Model
         'releaseDate',
         'author',
         'genre',
+        'picture'
     ];
 
     public function comments(){

@@ -8,12 +8,15 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <body>
-    <form action="{{route('storeBook')}}" method="POST">
+    <form action="{{route('storeBook')}}" method="POST" enctype="multipart/form-data">
         @csrf
         <h1>Create Book</h1>
         <div class="mb-3">
           <label for="bookTitle" class="form-label">Book Title</label>
           <input type="text" class="form-control" id="bookTitle" name="bookTitle">
+          @error('bookTitle')
+              <label for="">{{$message}}</label>
+          @enderror
         </div>
         <div class="mb-3">
           <label for="releaseDate" class="form-label">Release Date</label>
@@ -26,6 +29,13 @@
         <div class="mb-3">
             <label for="genre" class="form-label">Genre</label>
             <input type="text" class="form-control" id="genre" name="genre">
+        </div>
+        <div class="mb-3">
+            <label for="picture" class="form-label">Picture</label>
+            <input type="file" class="form-control" id="picture" name="picture">
+            @error('picture')
+                <label for="">{{$message}}</label>
+            @enderror
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
