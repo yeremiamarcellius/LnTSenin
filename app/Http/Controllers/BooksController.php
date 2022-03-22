@@ -9,6 +9,7 @@ use App\Models\Comment;
 class BooksController extends Controller
 {
     public function createBook(){
+        $this->authorize('admin');
         return view('createBook');
     }
 
